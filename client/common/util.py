@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List
 import pandas as pd
-import tabulate
+from tabulate import tabulate
 import datetime
 import sqlalchemy
 
@@ -36,13 +36,15 @@ class Option:
         self.id = id
         self.query = query
 
-    def run(self):
-        kwargs = {}
+    def run(self, kwargs=None) -> pd.DataFrame:
+        if kwargs is None:
+            kwargs = {}
+        kwargs = kwargs
         variable_parser = VariableParser()
 
         for variable in self.query.variables:
             varname = variable.value
-            var = input(f"Enter {varname}:")
+            var = kwargs[varname] if varname in kwargs else input(f"Enter {varname}:")
             parsed_var = variable_parser.parse(variable, var)
             kwargs[varname] = parsed_var
 
@@ -111,11 +113,11 @@ class Client:
 def get_db_url():
     return sqlalchemy.URL.create(
         "mysql+pymysql",
-        username="root",
-        password="",
-        host="localhost",
+        username="omarmon",
+        password="OrsonMarmon1529!!",
+        host="riku.shoshin.uwaterloo.ca",
         port=3306,
-        database="team99"
+        database="db356_team69"
     )
 
 

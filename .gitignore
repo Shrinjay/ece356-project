@@ -1,0 +1,9 @@
+archive/
+full_history/
+.DS_Store
+.idea/
+client/tests/__pycache__/
+load2.sql
+VideoDemo/
+full_history.zip
+archive.zip

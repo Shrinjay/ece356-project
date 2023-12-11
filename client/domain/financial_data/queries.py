@@ -23,7 +23,7 @@ get_financial_data = Query(
 # where stockID = (select ID from Stock where Symbol = '{stock_symbol}');
 def _get_financial_data_for_stock(stock_symbol: str):
     query = f"""   
-    select Year, Revenue, RevenueGrowth, CostofRevenue, GrossProfit, RDExpenses, SGAExpenses, OperatingExpenses, OperatingIncome, InterestExpense
+    select stockID, Year, Revenue, RevenueGrowth, CostofRevenue, GrossProfit, RDExpenses, SGAExpenses, OperatingExpenses, OperatingIncome, InterestExpense
     from FinancialData
     where stockID = (select ID from Stock where Symbol = '{stock_symbol}');
     """
